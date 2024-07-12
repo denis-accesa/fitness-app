@@ -4,18 +4,15 @@ FROM node:18
 # Set the working directory
 WORKDIR /app
 
-# Copy the monorepo's package.json and yarn.lock files to the working directory
-COPY ../../package.json ../../yarn.lock ./
-
-# Copy the turbo.json configuration file
-COPY ../../turbo.json ./
+# Copy the monorepo's package.json, yarn.lock files, and turbo.json to the working directory
+COPY package.json yarn.lock turbo.json ./
 
 # Install Yarn and Turbo globally
 RUN corepack enable
 RUN yarn set version stable
 
 # Copy the entire monorepo
-COPY ../../ ./
+COPY . .
 
 # Install dependencies
 RUN yarn install
