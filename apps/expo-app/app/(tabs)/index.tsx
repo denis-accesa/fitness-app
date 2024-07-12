@@ -10,6 +10,7 @@ const workouts = [
     duration: 30,
     imageUrl: "https://picsum.photos/300/200",
     completed: true,
+    categories: ["strength", "cardio"],
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const workouts = [
     duration: 45,
     imageUrl: "https://picsum.photos/300/200",
     completed: false,
+    categories: ["cardio"],
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ const workouts = [
     duration: 75,
     imageUrl: "https://picsum.photos/300/200",
     completed: false,
+    categories: ["strength", "toning", "cardio"],
   },
 ];
 

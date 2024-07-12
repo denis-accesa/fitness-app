@@ -1,5 +1,6 @@
 import type { CardProps } from "tamagui";
 import { Button, Card, H4, Image, Paragraph, XStack, YStack } from "tamagui";
+import CategoryList from "./CategoryList";
 
 type WorkoutProps = CardProps & {
   title: string;
@@ -7,6 +8,7 @@ type WorkoutProps = CardProps & {
   duration: number;
   imageUrl: string;
   completed: boolean;
+  categories?: string[];
 };
 
 export default function Workout({
@@ -41,6 +43,7 @@ export default function Workout({
               {duration && ` • ${duration} min`}
               {completed && ` • Completed`}
             </Paragraph>
+            <CategoryList categories={props.categories} />
           </YStack>
 
           {completed === false && (
