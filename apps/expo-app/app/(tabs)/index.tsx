@@ -1,48 +1,62 @@
-import { ExternalLink } from '@tamagui/lucide-icons'
-import { Anchor, H2, Paragraph, XStack, YStack } from 'tamagui'
-import { ToastControl } from 'app/CurrentToast'
+import { useRouter } from "expo-router";
+import { ScrollView, YStack } from "tamagui";
+import Workout from "../../components/Workout";
 
-export default function TabOneScreen() {
+const workouts = [
+  {
+    id: 1,
+    title: "Upper Body",
+    exercisesCount: 5,
+    duration: 30,
+    imageUrl: "https://picsum.photos/300/200",
+    completed: true,
+  },
+  {
+    id: 2,
+    title: "Lower Body",
+    exercisesCount: 7,
+    duration: 45,
+    imageUrl: "https://picsum.photos/300/200",
+    completed: false,
+  },
+  {
+    id: 3,
+    title: "Full Body",
+    exercisesCount: 12,
+    duration: 75,
+    imageUrl: "https://picsum.photos/300/200",
+    completed: false,
+  },
+];
+
+export default function WorkoutsScreen() {
+  const router = useRouter();
+
   return (
-    <YStack f={1} ai="center" gap="$8" px="$10" pt="$5">
-      <H2>Tamagui + Expo</H2>
-
-      <ToastControl />
-
-      <XStack ai="center" jc="center" fw="wrap" gap="$1.5" pos="absolute" b="$8">
-        <Paragraph fos="$5">Add</Paragraph>
-
-        <Paragraph fos="$5" px="$2" py="$1" col="$blue10" bg="$blue5" br="$3">
-          tamagui.config.ts
-        </Paragraph>
-
-        <Paragraph fos="$5">to root and follow the</Paragraph>
-
-        <XStack
-          ai="center"
-          gap="$1.5"
-          px="$2"
-          py="$1"
-          br="$3"
-          bg="$purple5"
-          hoverStyle={{ bg: '$purple6' }}
-          pressStyle={{ bg: '$purple4' }}
-        >
-          <Anchor
-            href="https://tamagui.dev/docs/core/configuration"
-            textDecorationLine="none"
-            col="$purple10"
-            fos="$5"
-          >
-            Configuration guide
-          </Anchor>
-          <ExternalLink size="$1" col="$purple10" />
-        </XStack>
-
-        <Paragraph fos="$5" ta="center">
-          to configure your themes and tokens.
-        </Paragraph>
-      </XStack>
+    <YStack flex={1}>
+      <ScrollView>
+        <YStack gap="$4" padding="$4">
+          {workouts.map(({ id, ...workout }) => (
+            <Workout
+              key={id}
+              animation={"bouncy"}
+              size="$4"
+              // width={250}
+              // height={300}
+              //   onPress={() => {
+              //     // if(!workout.completed) {
+              //     //   router.navigate('Workout', { workout })
+              //     // }
+              //   }}
+              scale={0.9}
+              hoverStyle={{ scale: 0.925 }}
+              pressStyle={workout.completed ? null : { scale: 0.875 }}
+              padded={false}
+              {...workout}
+            />
+          ))}
+        </YStack>
+      </ScrollView>
     </YStack>
-  )
+  );
 }
