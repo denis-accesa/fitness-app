@@ -6,4 +6,5 @@ export interface WorkoutDto {
   imageUrl: string;
   completed: boolean;
   categories?: string[];
+  favorite?: boolean;
 }
