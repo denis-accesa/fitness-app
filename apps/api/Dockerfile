@@ -5,7 +5,9 @@ FROM node:18
 WORKDIR /app
 
 # Copy the root-level files essential for dependency management
-COPY ../../package.json ../../yarn.lock ../../turbo.json ./
+COPY ../../package.json /app/
+COPY ../../yarn.lock /app/
+COPY ../../turbo.json /app/
 
 # Install Yarn and Turbo (adjust version if needed)
 RUN npm install -g yarn@latest turbo@1.10.14 --force
@@ -17,7 +19,7 @@ RUN yarn install
 COPY . .
 
 # Build the NestJS application (adjust if your build script is different)
-RUN yarn turbo run build --filter=api
+RUN npx turbo run build --filter=api...
 
 # Specify the command to run your application
-CMD ["yarn", "turbo", "run", "start", "--filter=api"]
+CMD ["npx", "turbo", "run", "start", "--filter=api"]
