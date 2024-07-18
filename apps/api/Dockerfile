@@ -8,7 +8,7 @@ WORKDIR /app
 COPY ../../package.json ../../yarn.lock ../../turbo.json ./
 
 # Install Yarn and Turbo (adjust version if needed)
-RUN npm install -g yarn@3.6.1 turbo@1.10.14
+RUN npm install -g yarn@latest turbo@1.10.14 --force
 
 # Install dependencies
 RUN yarn install
