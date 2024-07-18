@@ -5,9 +5,7 @@ FROM node:18
 WORKDIR /app
 
 # Copy the root-level files essential for dependency management
-COPY ../../package.json /app/
-COPY ../../yarn.lock /app/
-COPY ../../turbo.json /app/
+COPY package.json yarn.lock turbo.json ./
 
 # Install Yarn and Turbo (adjust version if needed)
 RUN npm install -g yarn@latest turbo@1.10.14 --force
@@ -15,8 +13,8 @@ RUN npm install -g yarn@latest turbo@1.10.14 --force
 # Install dependencies
 RUN yarn install
 
-# Copy the api app source code
-COPY ./apps/api /app
+# Copy the entire project, excluding node_modules
+COPY . .
 
 # Build the NestJS application (adjust if your build script is different)
 RUN npx turbo run build --filter=api

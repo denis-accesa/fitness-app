@@ -1,6 +1,7 @@
 {
   "name": "fitness-app",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -15,7 +16,6 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "yarn@1.22.22",
   "workspaces": [
     "apps/*",
     "packages/*"
