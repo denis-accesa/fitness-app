@@ -20,7 +20,7 @@ RUN yarn global add @nestjs/cli
 COPY . .
 
 # Build the entire monorepo to ensure all packages are built
-RUN npx turbo run build
+RUN npx turbo run build --include-dependencies --filter=api
 
 # Specify the command to run your application
 CMD ["yarn", "turbo", "run", "start", "--filter=api"]
