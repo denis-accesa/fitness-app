@@ -13,6 +13,9 @@ RUN npm install -g yarn@latest turbo@1.10.14 --force
 # Install dependencies
 RUN yarn install
 
+# Install NestJS CLI globally
+RUN yarn global add @nestjs/cli
+
 # Copy the entire project, excluding node_modules
 COPY . .
 
