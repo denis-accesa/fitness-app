@@ -19,8 +19,9 @@ RUN yarn global add @nestjs/cli
 # Copy the entire project, excluding node_modules
 COPY . .
 
-# Build all necessary packages
-RUN npx turbo run build
+# Build only the shared package and the api package
+RUN npx turbo run build --filter=@fitness-app/shared...
+RUN npx turbo run build --filter=api
 
 # Specify the command to run your application
 CMD ["yarn", "turbo", "run", "start", "--filter=api"]
