@@ -19,8 +19,8 @@ RUN yarn global add @nestjs/cli
 # Copy the entire project, excluding node_modules
 COPY . .
 
-# Build the NestJS application (adjust if your build script is different)
-RUN npx turbo run build --filter=api
+# Build the entire monorepo to ensure all packages are built
+RUN npx turbo run build
 
 # Specify the command to run your application
-CMD ["npx", "turbo", "run", "start", "--filter=api"]
+CMD ["yarn", "turbo", "run", "start", "--filter=api"]
