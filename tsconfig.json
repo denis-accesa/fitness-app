@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@fitness-app/*": ["packages/*/src"],
+      "@nestjs/*": ["node_modules/@nestjs/*"]
+    }
+  }
+}
