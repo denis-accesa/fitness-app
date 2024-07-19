@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the root-level files essential for dependency management
 COPY package.json yarn.lock turbo.json ./
 
-# Install Yarn and Turbo (adjust version if needed)
+# Install Yarn and Turbo globally (adjust version if needed)
 RUN npm install -g yarn@latest turbo@1.10.14 --force
 
 # Install dependencies
