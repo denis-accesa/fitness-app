@@ -23,7 +23,7 @@ COPY . .
 RUN npx turbo run build --filter=@fitness-app/shared...
 
 # Build the API package
-RUN npx turbo run build --filter=api
+RUN npx turbo run build --filter=api...
 
 # Specify the command to run your application
 CMD ["yarn", "turbo", "run", "start", "--filter=api"]
